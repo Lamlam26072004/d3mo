@@ -35,7 +35,7 @@ function Register() {
     registerMutation.mutate(userData, {
       onSuccess: () => {
         setRegisterSuccess(
-          'Đăng ký thành công! Chào mừng bạn đến với Fashion Zone'
+          'Đăng ký thành công! Chào mừng bạn đến với Tempus Chroniker'
         );
       },
       onError: (error: any) => {

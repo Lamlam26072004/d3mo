@@ -270,7 +270,7 @@ const Footer = () => {
         <div className="footer-bottom container">
           <div className="d-block d-md-flex align-items-center">
             <span className="footer-copyright me-auto">
-              ©2025 Fashion Zone
+              ©2025 Tempus Chroniker
             </span>
             <div className="footer-settings d-block d-md-flex align-items-center">
               <div className="d-flex align-items-center">

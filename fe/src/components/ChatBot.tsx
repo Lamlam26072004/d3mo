@@ -143,7 +143,7 @@ const ChatBot = () => {
                             alt="Admin"
                         />
                         <div>
-                            <p className="font-bold">Fashion Zone</p>
+                            <p className="font-bold">Tempus Chroniker</p>
                             <p className="text-[10px] text-gray-400">không hoạt động</p>
                         </div>
                         <button

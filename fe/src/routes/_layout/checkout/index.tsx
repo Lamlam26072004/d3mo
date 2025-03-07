@@ -528,7 +528,7 @@ export const Route = createFileRoute('/_layout/checkout/')({
               <div className="flex items-center space-x-2">
                 <ReceiptPercent className="h-6 w-6 text-red-500" />
                 <span className="font-medium text-gray-800">
-                  Fashion zone Voucher
+                Tempus Chroniker Voucher
                 </span>
               </div>
               <button
