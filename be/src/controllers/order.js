@@ -21,13 +21,13 @@ const ZALOPAY_ENDPOINT = process.env.ZALOPAY_ENDPOINT;
 const createOrder = async (req, res) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const { userId, items, totalPrice, customerInfo, paymentMethod, shippingMessageDisplay , discount, couponCode } = req.body;
+      const { userId, items, totalPrice, customerInfo, paymentMethod, shippingMessageDisplay, discount, couponCode } = req.body;
 
       const order = await Order.create({
         userId,
         items: items.map((item) => ({
           productId: item.productId,
-          slug: item.slug || `product-${item.productId}`,  
+          slug: item.slug || `product-${item.productId}-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,  
           name: item.name,
           price: item.price,
           quantity: item.quantity,
@@ -46,7 +46,6 @@ const createOrder = async (req, res) => {
         discount,
       });
 
-
       for (const item of items) {
         const product = await Product.findById(item.productId);
         const variant = product.variants.find(
@@ -60,18 +59,15 @@ const createOrder = async (req, res) => {
             { new: true }
           );
         } 
-        
       }
 
-     
-        const Id = new ObjectId(order.userId); // Chuyển sang ObjectId
-        const user = await User.findOne({ _id: Id });
+      const Id = new ObjectId(order.userId); // Chuyển sang ObjectId
+      const user = await User.findOne({ _id: Id });
 
       if (!user || !user.email) {
         throw new Error('User not found or email is missing.');
       }
       const email = user.email;
-
 
       Mail.sendOrderConfirmation(email, order);
 
@@ -152,7 +148,6 @@ const createOrder = async (req, res) => {
     }
   });
 };
-
 
 const countOrdersByStatus = async () => {
   const orders = await Order.aggregate([

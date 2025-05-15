@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// Định nghĩa schema cho Variant
 const variantSchema = new mongoose.Schema({
   size: {
     type: String,
